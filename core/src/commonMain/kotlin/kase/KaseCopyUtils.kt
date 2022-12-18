@@ -1,6 +1,6 @@
 package kase
 
-import presenters.actions.SimpleActionsBuilder
+import actions.SimpleActionsBuilder
 
 fun <D> Kase<D>.copy(message: String): Loading<D> = when (this) {
     is Pending -> Loading(message, data = null)

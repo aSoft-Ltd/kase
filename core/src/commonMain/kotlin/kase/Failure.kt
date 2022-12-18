@@ -2,7 +2,7 @@
 
 package kase
 
-import presenters.actions.SimpleAction
+import actions.SimpleAction
 
 data class Failure<out D>(
     val cause: Throwable,

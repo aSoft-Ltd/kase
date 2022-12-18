@@ -1,6 +1,6 @@
 package kase
 
-import presenters.actions.SimpleActionsBuilder
+import actions.SimpleActionsBuilder
 
 inline fun <D> Failure(
     cause: Throwable,

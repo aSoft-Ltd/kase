@@ -5,6 +5,6 @@ package kase
 
 import kotlin.js.JsExport
 
-interface CanPass<out D> {
+sealed interface CanPass<out D> {
     val asSuccess: Success<D>?
 }

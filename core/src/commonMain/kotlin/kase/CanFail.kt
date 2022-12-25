@@ -4,6 +4,6 @@ package kase
 
 import kotlin.js.JsExport
 
-interface CanFail<out D> {
+sealed interface CanFail<out D> {
     val asFailure: Failure<D>?
 }

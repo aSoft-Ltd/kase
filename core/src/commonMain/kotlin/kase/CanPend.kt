@@ -5,6 +5,6 @@ package kase
 
 import kotlin.js.JsExport
 
-interface CanPend {
+sealed interface CanPend {
     val asPending: Pending?
 }

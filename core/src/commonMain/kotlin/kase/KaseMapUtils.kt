@@ -35,10 +35,11 @@ private fun <D, R> Kase<D>.mapToKase(transform: (D) -> R): Kase<R> = when (this)
     is Loading -> mapToKase(transform)
     is Success -> mapToKase(transform)
     is Pending -> Pending
+    is Executing -> this
 }
 
-fun <D, R> EagerState<D>.map(transform: (D) -> R): EagerState<R> = mapToKase(transform).asEagerState()
+fun <D, R> EagerState<D>.map(transform: (D) -> R): EagerState<R> = mapToKase(transform) as EagerState<R>
 
-fun <D, R> LazyState<D>.map(transform: (D) -> R): LazyState<R> = mapToKase(transform).asLazyState()
+fun <D, R> LazyState<D>.map(transform: (D) -> R): LazyState<R> = mapToKase(transform) as LazyState<R>
 
-fun <D, R> Result<D>.map(transform: (D) -> R): Result<R> = mapToKase(transform).asResult()
+fun <D, R> ExecutorState<D>.map(transform: (D) -> R): ExecutorState<R> = mapToKase(transform) as ExecutorState<R>

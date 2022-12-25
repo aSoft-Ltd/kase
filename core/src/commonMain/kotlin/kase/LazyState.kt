@@ -10,8 +10,6 @@ import kotlin.js.JsExport
  *
  * Conceptually, these are things that start from a [Pending] state.
  * The need to be explicitly started for them to begin their work and
- * enter into an execution/[Loading] state. Hence the name, Lazy
+ * enter into a [Loading] state. Hence the name, Lazy
  */
-sealed interface LazyState<out D> : Kase<D>, CanPend, CanLoad<D>, CanPass<D>, CanFail<D> {
-    val data: D?
-}
+sealed interface LazyState<out D> : Kase<D>, CanPend, CanLoad<D>, CanPass<D>, CanFail<D>

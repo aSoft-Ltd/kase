@@ -11,7 +11,6 @@ import kotlin.js.JsExport
  * have a result/response which may either be a [Success] or [Failure].
  */
 sealed interface Result<out D> : Kase<D>, CanPass<D>, CanFail<D> {
-    val data: D?
 
     fun <R> map(transform: (D) -> R): Result<R>
 

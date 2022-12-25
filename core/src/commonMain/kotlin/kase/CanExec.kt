@@ -5,6 +5,6 @@ package kase
 
 import kotlin.js.JsExport
 
-sealed interface CanLoad<out D> {
-    val asLoading: Loading<D>?
+sealed interface CanExec {
+    val asExecuting: Executing?
 }

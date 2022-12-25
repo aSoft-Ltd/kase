@@ -34,8 +34,7 @@ private fun <D, R> Kase<D>.mapToKase(transform: (D) -> R): Kase<R> = when (this)
     is Failure -> mapToKase(transform)
     is Loading -> mapToKase(transform)
     is Success -> mapToKase(transform)
-    is Pending -> Pending
-    is Executing -> this
+    else -> this as Kase<R>
 }
 
 fun <D, R> EagerState<D>.map(transform: (D) -> R): EagerState<R> = mapToKase(transform) as EagerState<R>

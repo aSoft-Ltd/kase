@@ -30,4 +30,7 @@ interface Stage {
 
     @JsName("_ignore_invoke3")
     operator fun invoke(progress: ProgressState): StageProgress
+
+    @JsName("_ignore_invoke4")
+    operator fun <D> invoke(state: ExecutorState<D>): StageProgress
 }

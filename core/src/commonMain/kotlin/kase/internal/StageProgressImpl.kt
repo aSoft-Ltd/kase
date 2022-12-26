@@ -1,8 +1,13 @@
 package kase.internal
 
+import kase.Executing
+import kase.ExecutorState
+import kase.Failure
+import kase.Pending
 import kase.Progress
 import kase.ProgressState
 import kase.StageProgress
+import kase.Success
 
 @PublishedApi
 internal data class StageProgressImpl(
@@ -36,4 +41,11 @@ internal data class StageProgressImpl(
     override fun invoke(done: Long, total: Long) = StageProgressImpl(name, number, outOf, done, total)
 
     override fun invoke(progress: ProgressState) = StageProgressImpl(name, number, outOf, progress.current.done, progress.current.total)
+
+    override fun <D> invoke(state: ExecutorState<D>) = when (state) {
+        is Executing -> StageProgressImpl(name, number, outOf, state.progress.done, state.progress.total)
+        is Pending -> StageProgressImpl(name, number, outOf, 0, 1)
+        is Failure -> StageProgressImpl(name, number, outOf, 100, 100)
+        is Success -> StageProgressImpl(name, number, outOf, 100, 100)
+    }
 }

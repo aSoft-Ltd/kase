@@ -1,6 +1,7 @@
 package kase
 
 import kollections.toIList
+import kollections.List
 
 open class StageProgressBag : ProgressPublisher {
     private val stages: MutableMap<String, StageProgress> = mutableMapOf()
@@ -12,7 +13,7 @@ open class StageProgressBag : ProgressPublisher {
             Stage(s, index + 1, stageNames.size)
         }.associate { it.name to it(0, 0) }
         stages.putAll(sgs.toMutableMap())
-        return sgs.values.toList()
+        return sgs.values.toIList()
     }
 
     override fun updateProgress(p: StageProgress): ProgressState {

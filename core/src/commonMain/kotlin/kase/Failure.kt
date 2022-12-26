@@ -3,12 +3,13 @@
 package kase
 
 import actions.SimpleAction
+import kollections.iListOf
 
 data class Failure<out D>(
     val cause: Throwable,
     val message: String = cause.message ?: DEFAULT_MESSAGE,
     override val data: D? = null,
-    val actions: List<SimpleAction>
+    val actions: List<SimpleAction> = iListOf()
 ) : EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D> {
     override val asPending: Pending? = null
     override val asLoading: Loading<D>? = null

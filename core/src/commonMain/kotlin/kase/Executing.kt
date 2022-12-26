@@ -6,7 +6,8 @@ package kase
 import kotlin.js.JsExport
 
 data class Executing(
-    val message: String = "Loading . . ."
+    val message: String = "Executing . . .",
+    val progress: ProgressState = ProgressState.initial()
 ) : LazyState<Nothing>, EagerState<Nothing>, ExecutorState<Nothing> {
     override val data: Nothing? = null
     override val asPending: Pending? = null

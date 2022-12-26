@@ -16,6 +16,12 @@ kotlin {
                 api(projects.actionsCore)
             }
         }
+
+        val commonTest by getting {
+            dependencies {
+                api(projects.expectCoroutines)
+            }
+        }
     }
 }
 

@@ -2,7 +2,15 @@ package kase
 
 import actions.SimpleActionsBuilder
 
-fun <D> Kase<D>.copy(message: String): Loading<D> = Loading(message, data = data)
+fun <D> Kase<D>.loading(
+    message: String,
+    progress: ProgressState? = null
+): Loading<D> = if (progress != null) Loading(message, data, progress) else Loading(message, data)
+
+fun Kase<*>.executing(
+    message: String,
+    progress: ProgressState? = null
+): Executing = if (progress != null) Executing(message, progress) else Executing(message)
 
 fun <D> Kase<D>.copy(
     cause: Throwable,

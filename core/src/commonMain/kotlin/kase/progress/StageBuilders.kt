@@ -1,4 +1,4 @@
-package kase
+package kase.progress
 
 import kase.internal.StageProgressImpl
 

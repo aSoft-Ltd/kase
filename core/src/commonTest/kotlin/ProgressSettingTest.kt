@@ -1,7 +1,6 @@
 import expect.expect
-import kase.EagerState
 import kase.Loading
-import kase.StageProgressBag
+import kase.progress.StageProgressBag
 import kotlin.test.Test
 
 class ProgressSettingTest {

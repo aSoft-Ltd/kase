@@ -1,7 +1,7 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package kase
+package kase.progress
 
 import kase.internal.ProgressImpl
 import kollections.List

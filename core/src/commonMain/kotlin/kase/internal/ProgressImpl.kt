@@ -1,6 +1,6 @@
 package kase.internal
 
-import kase.Progress
+import kase.progress.Progress
 import kotlin.math.round
 
 @PublishedApi

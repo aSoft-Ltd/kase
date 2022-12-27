@@ -12,4 +12,4 @@ import kotlin.js.JsExport
  * The need to be explicitly started for them to begin Execution and
  * enter into an [Executing] state. Hence the name, Executor
  */
-sealed interface ExecutorState<out D> : Kase<D>, CanPend, CanExec, CanPass<D>, CanFail<D>
+sealed interface ExecutorState<out D> : State<D>, CanPend, CanExecute, CanSucceed<D>, CanFail<D>

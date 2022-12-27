@@ -3,17 +3,17 @@
 
 package kase
 
-import kase.progress.ProgressState
 import kotlin.js.JsExport
 
-data class Executing(
-    val message: String = "Executing . . .",
-    val progress: ProgressState = ProgressState.initial()
-) : ExecutorState<Nothing> {
+object Validating : FormState<Nothing> {
+
     override val data: Nothing? = null
 
     override val asPending: Pending? = null
-    override val asExecuting: Executing = this
+    override val asValidating: Validating = this
     override val asSuccess: Success<Nothing>? = null
     override val asFailure: Failure<Nothing>? = null
+    override val asSubmitting: Submitting? = null
+
+    override fun toString(): String = "Validating"
 }

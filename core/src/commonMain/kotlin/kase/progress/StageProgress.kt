@@ -1,10 +1,8 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package kase
+package kase.progress
 
 import kotlin.js.JsExport
 
-sealed interface CanLoad<out D> {
-    val asLoading: Loading<D>?
-}
+interface StageProgress : Stage, Progress

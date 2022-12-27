@@ -1,20 +1,22 @@
 package kase
 
 import actions.SimpleActionsBuilder
+import kase.progress.ProgressState
 
-fun <D> Kase<D>.loading(
+fun <D> State<D>.loading(
     message: String,
+    data: D? = this.data,
     progress: ProgressState? = null
 ): Loading<D> = if (progress != null) Loading(message, data, progress) else Loading(message, data)
 
-fun Kase<*>.executing(
+fun State<*>.executing(
     message: String,
     progress: ProgressState? = null
 ): Executing = if (progress != null) Executing(message, progress) else Executing(message)
 
-fun <D> Kase<D>.copy(
+fun <D> State<D>.failure(
     cause: Throwable,
     builder: (SimpleActionsBuilder.() -> Unit)? = null
-): Failure<D> = Failure(cause = cause, data = data, builder = builder)
+): Failure<D> = if (builder != null) Failure(cause = cause, data = data, builder = builder) else Failure(cause)
 
-fun <D> Kase<D>.copy(data: D): Success<D> = Success(data)
+fun <D> State<D>.success(data: D): Success<D> = Success(data)

@@ -10,7 +10,7 @@ import kotlin.js.JsExport
  * Conceptually, these are things that have already finished worked and
  * have a result/response which may either be a [Success] or [Failure].
  */
-sealed interface Result<out D> : Kase<D>, CanPass<D>, CanFail<D> {
+sealed interface Result<out D> : State<D>, CanSucceed<D>, CanFail<D> {
 
     fun <R> map(transform: (D) -> R): Result<R>
 

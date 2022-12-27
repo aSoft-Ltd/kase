@@ -12,4 +12,4 @@ import kotlin.js.JsExport
  * of an Uninitialized/[Pending] state, Hence the name Eager, coz they begin
  * execution immediately after being started
  */
-sealed interface EagerState<out D> : Kase<D>, CanLoad<D>, CanPass<D>, CanFail<D>
+sealed interface EagerState<out D> : State<D>, CanLoad<D>, CanSucceed<D>, CanFail<D>

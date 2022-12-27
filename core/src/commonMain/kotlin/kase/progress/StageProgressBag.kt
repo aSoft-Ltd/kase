@@ -1,9 +1,9 @@
-package kase
+package kase.progress
 
 import kollections.toIList
 import kollections.List
 
-open class StageProgressBag : ProgressPublisher {
+class StageProgressBag : ProgressPublisher {
     private val stages: MutableMap<String, StageProgress> = mutableMapOf()
     var progress: ProgressState = ProgressState.initial()
 

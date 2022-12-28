@@ -13,4 +13,6 @@ data class Submitting(val json: String) : FormState<Nothing> {
     override val asSubmitting: Submitting = this
     override val asSuccess: Success<Nothing>? = null
     override val asFailure: Failure<Nothing>? = null
+
+    override fun toString(): String = "Submitting $json"
 }

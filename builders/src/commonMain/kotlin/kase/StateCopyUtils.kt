@@ -1,7 +1,7 @@
 package kase
 
-import actions.Action0I1R
-import actions.Action0I1RBuilder
+import actions.Action0
+import actions.builders.Action0I1RBuilder
 import kase.progress.ProgressState
 
 fun <D> State<D>.loading(
@@ -17,7 +17,7 @@ fun State<*>.executing(
 
 fun <D> State<D>.failure(
     cause: Throwable,
-    builder: (Action0I1RBuilder<Unit>.() -> Action0I1R<Unit>)? = null
+    builder: (Action0I1RBuilder<Unit>.() -> Action0<Unit>)? = null
 ): Failure<D> = if (builder != null) Failure(cause = cause, data = data, builder = builder) else Failure(cause)
 
 fun <D> State<D>.success(data: D): Success<D> = Success(data)

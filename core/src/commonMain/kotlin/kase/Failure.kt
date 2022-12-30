@@ -3,7 +3,7 @@
 
 package kase
 
-import actions.Action0I1R
+import actions.Action0
 import kollections.iListOf
 import kotlin.js.JsExport
 
@@ -11,7 +11,7 @@ data class Failure<out D>(
     val cause: Throwable,
     val message: String = cause.message ?: DEFAULT_MESSAGE,
     override val data: D? = null,
-    val actions: List<Action0I1R<Unit>> = iListOf()
+    val actions: List<Action0<Unit>> = iListOf()
 ) : EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
     override val asPending: Pending? = null
     override val asLoading: Loading<D>? = null

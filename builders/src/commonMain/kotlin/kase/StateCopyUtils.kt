@@ -10,7 +10,7 @@ fun <D> State<D>.loading(
     progress: ProgressState? = null
 ): Loading<D> = if (progress != null) Loading(message, data, progress) else Loading(message, data)
 
-fun State<*>.executing(
+fun State<Any?>.executing(
     message: String,
     progress: ProgressState? = null
 ): Executing = if (progress != null) Executing(message, progress) else Executing(message)

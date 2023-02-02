@@ -1,10 +1,11 @@
 package kase
 
 import actions.Action0
-import actions.builders.Action0I1RBuilder
+import actions.builders.Actions0Builder
 
 fun <D> Result<D>.toLazyState(
-    builder: (Action0I1RBuilder<Unit>.() -> Action0<Unit>)
+    data: D? = this.data,
+    builder: (Actions0Builder<Unit>.() -> Action0<Unit>)
 ): LazyState<D> = when (this) {
     is Success -> this
     is Failure -> Failure(cause, message, data, builder)

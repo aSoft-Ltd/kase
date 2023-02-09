@@ -12,8 +12,8 @@ data class Executing(
 ) : ExecutorState<Nothing> {
     override val data: Nothing? = null
 
-    override val asPending: Pending? = null
+    override val asPending: Nothing? = null
     override val asExecuting: Executing = this
-    override val asSuccess: Success<Nothing>? = null
-    override val asFailure: Failure<Nothing>? = null
+    override val asSuccess: Nothing? = null
+    override val asFailure: Nothing? = null
 }

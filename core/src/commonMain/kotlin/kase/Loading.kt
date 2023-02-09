@@ -11,8 +11,8 @@ data class Loading<out D>(
     override val data: D? = null,
     val progress: ProgressState = ProgressState.initial()
 ) : LazyState<D>, EagerState<D> {
-    override val asPending: Pending? = null
+    override val asPending: Nothing? = null
     override val asLoading: Loading<D> = this
-    override val asSuccess: Success<D>? = null
-    override val asFailure: Failure<D>? = null
+    override val asSuccess: Nothing? = null
+    override val asFailure: Nothing? = null
 }

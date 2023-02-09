@@ -13,12 +13,12 @@ data class Failure<out D>(
     override val data: D? = null,
     val actions: List<Action0<Unit>> = iListOf()
 ) : EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
-    override val asPending: Pending? = null
-    override val asLoading: Loading<D>? = null
-    override val asValidating: Validating? = null
-    override val asSubmitting: Submitting? = null
-    override val asExecuting: Executing? = null
-    override val asSuccess: Success<D>? = null
+    override val asPending: Nothing? = null
+    override val asLoading: Nothing? = null
+    override val asValidating: Nothing? = null
+    override val asSubmitting: Nothing? = null
+    override val asExecuting: Nothing? = null
+    override val asSuccess: Nothing? = null
     override val asFailure: Failure<D> = this
 
     override fun <R> map(transform: (D) -> R): Failure<R> = mapToState(transform)

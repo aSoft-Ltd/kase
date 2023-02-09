@@ -1,5 +1,4 @@
 @file:JsExport
-@file:Suppress("NON_EXPORTABLE_TYPE")
 
 package kase
 
@@ -9,11 +8,11 @@ object Validating : FormState<Nothing> {
 
     override val data: Nothing? = null
 
-    override val asPending: Pending? = null
+    override val asPending: Nothing? = null
     override val asValidating: Validating = this
-    override val asSuccess: Success<Nothing>? = null
-    override val asFailure: Failure<Nothing>? = null
-    override val asSubmitting: Submitting? = null
+    override val asSuccess: Nothing? = null
+    override val asFailure: Nothing? = null
+    override val asSubmitting: Nothing? = null
 
     override fun toString(): String = "Validating"
 }

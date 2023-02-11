@@ -1,20 +1,30 @@
 @file:JsExport
+@file:Suppress("NON_EXPORTABLE_TYPE")
+
 package kase
 
 import kotlin.js.JsExport
 
-object None : Possible<Nothing> {
-    override fun <R : Any> map(transform: (Nothing) -> R) = None
+class None<out T : Any> private constructor() : Possible<T> {
+    override val value: T? = null
 
-    override fun <R : Any> flatMap(transform: (Nothing) -> Possible<R>): Possible<R> {
-        TODO("Not yet implemented")
+    @PublishedApi
+    internal companion object {
+        val NONE = None<Nothing>()
     }
 
-    override fun valueOrThrow(): Nothing {
-        TODO("Not yet implemented")
+    override fun <R : Any> map(transform: (T) -> R): None<R> = NONE
+
+    override fun <R : Any> flatMap(transform: (T) -> Possible<R>): None<R> = NONE
+
+    override fun recover(fn: () -> @UnsafeVariance T): Possible<T> = try {
+        Some(fn())
+    } catch (_: Throwable) {
+        NONE
     }
 
-    override fun valueOrNull(): Nothing? {
-        TODO("Not yet implemented")
-    }
+    @Throws(NoSuchElementException::class)
+    override fun valueOrThrow(): Nothing = throw NoSuchElementException("Possible has no value")
+
+    override fun valueOr(default: @UnsafeVariance T) = default
 }

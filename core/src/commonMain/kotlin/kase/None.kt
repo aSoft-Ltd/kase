@@ -5,7 +5,7 @@ package kase
 
 import kotlin.js.JsExport
 
-open class None<out T : Any> private constructor() : Possible<T> {
+abstract class None<out T : Any> private constructor() : Possible<T> {
     override val value: T? = null
 
     @PublishedApi

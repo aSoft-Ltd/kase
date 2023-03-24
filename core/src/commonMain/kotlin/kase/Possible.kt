@@ -11,7 +11,7 @@ sealed interface Possible<out T : Any> {
 
     fun <R : Any> flatMap(transform: (T) -> Possible<R>): Possible<R>
 
-    fun recover(fn: () -> @UnsafeVariance T): Possible<T>
+    fun catch(fn: () -> @UnsafeVariance T): Possible<T>
 
     @Throws(NoSuchElementException::class)
     fun valueOrThrow(): T

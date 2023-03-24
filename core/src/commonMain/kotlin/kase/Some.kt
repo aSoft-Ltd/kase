@@ -19,11 +19,13 @@ data class Some<out T : Any>(override val value: T) : Possible<T> {
         None
     }
 
-    override fun recover(fn: () -> @UnsafeVariance T): Some<T> = this
+    override fun catch(fn: () -> @UnsafeVariance T): Some<T> = this
 
     override fun equals(other: Any?): Boolean = other is Some<*> && value == other.value
 
     override fun valueOrThrow() = value
+
+    override fun toString() = value.toString()
 
     override fun valueOr(default: @UnsafeVariance T): T = value
 

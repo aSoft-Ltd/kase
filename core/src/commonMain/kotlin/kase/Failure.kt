@@ -13,6 +13,7 @@ data class Failure<out D>(
     override val data: D? = null,
     val actions: List<Action0<Unit>> = iListOf()
 ) : EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
+    override val value: D? = data
     override val asPending: Nothing? = null
     override val asLoading: Nothing? = null
     override val asValidating: Nothing? = null
@@ -24,6 +25,19 @@ data class Failure<out D>(
     override fun <R> map(transform: (D) -> R): Failure<R> = mapToState(transform)
 
     override fun catch(resolver: (Throwable) -> @UnsafeVariance D): Result<D> = catchToState(resolver) as Result<D>
+
+    override fun exists(): Boolean = false
+
+    override fun valueOr(default: @UnsafeVariance D): D = default
+
+    override fun valueOrThrow(): D = throw cause
+
+    override fun valueOrThrow(exp: Throwable): D {
+        exp.addSuppressed(cause)
+        throw exp
+    }
+
+    override fun valueOrThrow(msg: String): D = valueOrThrow(RuntimeException(msg))
 
     companion object {
         val DEFAULT_MESSAGE = "Unknown error"

@@ -3,18 +3,18 @@
 package kase
 
 import kotlin.js.JsExport
+import kotlin.js.JsName
 
-sealed interface Possible<out T : Any> {
+sealed interface Possible<out T> {
     val value: T?
 
-    fun <R : Any> map(transform: (T) -> R): Possible<R>
+    @Throws(Throwable::class)
+    @JsName("valueOrThrowException")
+    fun valueOrThrow(exp: Throwable): T
 
-    fun <R : Any> flatMap(transform: (T) -> Possible<R>): Possible<R>
-
-    fun recover(fn: () -> @UnsafeVariance T): Possible<T>
-
-    @Throws(NoSuchElementException::class)
-    fun valueOrThrow(): T
+    @Throws(Throwable::class)
+    @JsName("valueOrThrowMessage")
+    fun valueOrThrow(msg: String): T
 
     fun valueOr(default: @UnsafeVariance T): T
 

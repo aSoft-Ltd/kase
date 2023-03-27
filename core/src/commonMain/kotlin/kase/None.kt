@@ -5,28 +5,35 @@ package kase
 
 import kotlin.js.JsExport
 
-abstract class None<out T : Any> private constructor() : Possible<T> {
-    override val value: T? = null
+abstract class None<out T : Any> private constructor() : Optional<T> {
+    override val value: Nothing? = null
 
     @PublishedApi
-    internal companion object : None<Nothing>()
+    internal companion object : None<Nothing>() {
+        override val asSome: Nothing? = null
+        override val asNone: None<Nothing> = this
+    }
 
     override fun <R : Any> map(transform: (T) -> R): None<R> = None
 
-    override fun <R : Any> flatMap(transform: (T) -> Possible<R>): None<R> = None
+    override fun <R : Any> flatMap(transform: (T) -> Optional<R>): None<R> = None
 
-    override fun recover(fn: () -> @UnsafeVariance T): Possible<T> = try {
+    override fun catch(fn: () -> @UnsafeVariance T): Optional<T> = try {
         Some(fn())
     } catch (_: Throwable) {
         None
     }
 
-    override fun equals(other: Any?): Boolean = other is Possible<*> && other.value == null
+    override fun equals(other: Any?): Boolean = other is Optional<*> && other.value == null
 
     @Throws(NoSuchElementException::class)
-    override fun valueOrThrow(): Nothing = throw NoSuchElementException("Possible has no value")
+    override fun valueOrThrow(): Nothing = throw NoSuchElementException("Optional has no value")
 
-    override fun valueOr(default: @UnsafeVariance T) = default
+    override fun valueOr(default: @UnsafeVariance T): T = default
+
+    override fun valueOrThrow(exp: Throwable): Nothing = throw exp
+
+    override fun valueOrThrow(msg: String): Nothing = throw NoSuchElementException(msg)
 
     override fun exists(): Boolean = false
 }

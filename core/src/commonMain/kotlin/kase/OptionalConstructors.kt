@@ -7,7 +7,7 @@ import kotlin.js.JsExport
 import kotlin.jvm.JvmOverloads
 
 @JvmOverloads
-inline fun <T : Any> possibleOf(value: T? = null): Possible<T> = when (value) {
+inline fun <T : Any> optionalOf(value: T? = null): Optional<T> = when (value) {
     null -> None
     else -> Some(value)
 }

@@ -28,6 +28,8 @@ data class Some<out T : Any>(override val value: T) : Optional<T> {
 
     override fun valueOrThrow() = value
 
+    override fun toString() = value.toString()
+
     override fun valueOr(default: @UnsafeVariance T): T = value
 
     override fun exists(): Boolean = true

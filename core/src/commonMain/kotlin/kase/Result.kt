@@ -15,7 +15,4 @@ sealed interface Result<out D> : Possible<D>, State<D>, CanSucceed<D>, CanFail<D
     fun <R> map(transform: (D) -> R): Result<R>
 
     fun catch(resolver: (Throwable) -> @UnsafeVariance D): Result<D>
-
-    @Throws(Throwable::class)
-    fun valueOrThrow(): D
 }

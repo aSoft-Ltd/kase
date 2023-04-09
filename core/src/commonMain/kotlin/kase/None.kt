@@ -6,6 +6,7 @@ package kase
 import kotlin.js.JsExport
 
 abstract class None<out T : Any> private constructor() : Optional<T> {
+
     override val value: Nothing? = null
 
     @PublishedApi
@@ -34,6 +35,8 @@ abstract class None<out T : Any> private constructor() : Optional<T> {
     override fun valueOrThrow(exp: Throwable): Nothing = throw exp
 
     override fun valueOrThrow(msg: String): Nothing = throw NoSuchElementException(msg)
+
+    override fun toString(): String = "None"
 
     override fun exists(): Boolean = false
 }

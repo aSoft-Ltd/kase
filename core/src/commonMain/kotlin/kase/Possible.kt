@@ -16,6 +16,9 @@ sealed interface Possible<out T> {
     @JsName("valueOrThrowMessage")
     fun valueOrThrow(msg: String): T
 
+    @Throws(NoSuchElementException::class)
+    fun valueOrThrow(): T
+
     fun valueOr(default: @UnsafeVariance T): T
 
     fun exists(): Boolean

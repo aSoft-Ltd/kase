@@ -14,7 +14,4 @@ sealed interface Optional<out T : Any> : Possible<T> {
     fun <R : Any> flatMap(transform: (T) -> Optional<R>): Optional<R>
 
     fun catch(fn: () -> @UnsafeVariance T): Optional<T>
-
-    @Throws(NoSuchElementException::class)
-    fun valueOrThrow(): T
 }

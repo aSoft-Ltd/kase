@@ -7,6 +7,7 @@ import kotlin.js.JsExport
 
 data class Some<out T : Any>(override val value: T) : Optional<T> {
     override val asSome: Some<T> = this
+
     override val asNone: Nothing? = null
 
     override fun <R : Any> map(transform: (T) -> R): Optional<R> = try {

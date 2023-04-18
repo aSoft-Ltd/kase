@@ -2,7 +2,7 @@ pluginManagement {
     enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
     dependencyResolutionManagement {
         versionCatalogs {
-            file("gradle/versions").listFiles().map {
+            file("../versions/gradle/versions").listFiles().map {
                 it.nameWithoutExtension to it.absolutePath
             }.forEach { (name, path) ->
                 create(name) { from(files(path)) }
@@ -30,31 +30,12 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
-val tmp = 1
+rootProject.name = "Kase"
 
-rootProject.name = "presenters"
+includeBuild("../able")
 
-includeSubs("functions", "../functions", "core")
-includeSubs("expect", "../expect", "core", "coroutines")
-includeSubs("koncurrent-primitives", "../koncurrent/primitives", "core", "coroutines", "mock")
-includeSubs("koncurrent-later", "../koncurrent/later", "core", "coroutines", "test")
+includeSubs("kommander", "../kommander", "core")
 includeSubs("kollections", "../kollections", "interoperable")
-includeSubs("live", "../live", "core", "coroutines", "test")
-includeSubs("cache", "../cache", "api", "file", "test", "mock")
-includeSubs("viewmodel", "../viewmodel", "core")
-includeSubs("identifier", "../identifier", "core")
-includeSubs("formatter", "../formatter", "core")
+includeSubs("kevlar", "../kevlar", "core")
 
-includeBuild("../geo/geo-generator")
-includeSubs("geo", "../geo", "core", "countries")
-
-includeBuild("../kash/kash-generator")
-includeSubs("kash", "../kash", "currency", "money")
-// dependencies
-
-includeSubs("krono", "../krono", "api")
-
-includeSubs("presenters", ".", "states", "actions", "misc")
-includeSubs("presenters-collections", "collections", "core")
-includeSubs("presenters-collections-renderers", "collections/renderers", "string", "console")
-includeSubs("presenters-inputs", "inputs", "core", "identifier", "geo", "kash", "krono")
+includeSubs("kase", ".", "core")

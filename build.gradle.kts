@@ -27,5 +27,3 @@ tasks.dokkaHtmlMultiModule {
 
 group = "tz.co.asoft"
 version = asoft.versions.root.get()
-
-deployToSonatype()

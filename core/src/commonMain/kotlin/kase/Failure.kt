@@ -26,6 +26,8 @@ data class Failure<out D>(
 
     override fun catch(resolver: (Throwable) -> @UnsafeVariance D): Result<D> = catchToState(resolver) as Result<D>
 
+    override fun thenCatch(resolver: (Throwable) -> Result<@UnsafeVariance D>): Result<D> = resolver(cause)
+
     override fun exists(): Boolean = false
 
     override fun valueOr(default: @UnsafeVariance D): D = default

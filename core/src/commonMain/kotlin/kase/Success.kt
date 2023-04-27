@@ -21,7 +21,7 @@ data class Success<out D>(
 
     override fun catch(resolver: (Throwable) -> @UnsafeVariance D): Result<D> = this
 
-    override fun thenCatch(resolver: (Throwable) -> Result<@UnsafeVariance D>): Result<D> = this
+    override fun andCatch(resolver: (Throwable) -> Result<@UnsafeVariance D>): Result<D> = this
 
     override fun exists(): Boolean = true
 

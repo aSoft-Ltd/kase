@@ -27,6 +27,8 @@ data class Success<out D>(
 
     override fun valueOr(default: @UnsafeVariance D): D = data
 
+    override fun valueOrNull(): D = data
+
     override fun valueOrThrow(): D = data
 
     override fun valueOrThrow(exp: Throwable): D = data

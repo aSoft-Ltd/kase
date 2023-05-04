@@ -36,6 +36,8 @@ abstract class None<out T : Any> private constructor() : Optional<T> {
 
     override fun valueOrThrow(msg: String): Nothing = throw NoSuchElementException(msg)
 
+    override fun valueOrNull(): T? = value
+
     override fun toString(): String = "None"
 
     override fun exists(): Boolean = false

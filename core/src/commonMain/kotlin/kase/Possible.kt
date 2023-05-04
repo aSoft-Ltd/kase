@@ -21,5 +21,7 @@ sealed interface Possible<out T> {
 
     fun valueOr(default: @UnsafeVariance T): T
 
+    fun valueOrNull(): T?
+
     fun exists(): Boolean
 }

@@ -37,4 +37,6 @@ data class Some<out T : Any>(override val value: T) : Optional<T> {
     override fun valueOrThrow(exp: Throwable): T = value
 
     override fun valueOrThrow(msg: String): T = value
+
+    override fun valueOrNull(): T = value
 }

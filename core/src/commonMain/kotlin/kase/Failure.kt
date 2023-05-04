@@ -39,6 +39,8 @@ data class Failure<out D>(
         throw exp
     }
 
+    override fun valueOrNull(): D? = data
+
     override fun valueOrThrow(msg: String): D = valueOrThrow(RuntimeException(msg))
 
     companion object {

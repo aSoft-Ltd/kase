@@ -3,9 +3,10 @@
 
 package kase
 
+import kase.internal.AbstractPossible
 import kotlin.js.JsExport
 
-abstract class None<out T : Any> private constructor() : Optional<T> {
+abstract class None<out T : Any> private constructor() : AbstractPossible<T>(), Optional<T> {
 
     override val value: Nothing? = null
 
@@ -39,6 +40,8 @@ abstract class None<out T : Any> private constructor() : Optional<T> {
     override fun valueOrNull(): T? = value
 
     override fun toString(): String = "None"
+
+    override fun hashCode() = 0
 
     override fun exists(): Boolean = false
 }

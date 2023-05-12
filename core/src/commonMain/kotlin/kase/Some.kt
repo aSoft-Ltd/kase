@@ -3,9 +3,10 @@
 
 package kase
 
+import kase.internal.AbstractPossible
 import kotlin.js.JsExport
 
-data class Some<out T : Any>(override val value: T) : Optional<T> {
+data class Some<out T : Any>(override val value: T) : AbstractPossible<T>(), Optional<T> {
     override val asSome: Some<T> = this
 
     override val asNone: Nothing? = null
@@ -33,6 +34,8 @@ data class Some<out T : Any>(override val value: T) : Optional<T> {
     override fun valueOr(default: @UnsafeVariance T): T = value
 
     override fun exists(): Boolean = true
+
+    override fun hashCode(): Int = value.hashCode()
 
     override fun valueOrThrow(exp: Throwable): T = value
 

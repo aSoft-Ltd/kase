@@ -3,9 +3,10 @@
 
 package kase
 
+import kase.internal.AbstractPossible
 import kotlin.js.JsExport
 
-class Bag<out T : Any>(override var value: @UnsafeVariance T? = null) : Possible<T> {
+class Bag<out T : Any>(override var value: @UnsafeVariance T? = null) : AbstractPossible<T>() {
 
     override fun valueOrThrow(exp: Throwable): T = when (val v = value) {
         null -> throw exp

@@ -1,5 +1,5 @@
 @file:JsExport
-@file:Suppress("NON_EXPORTABLE_TYPE")
+@file:Suppress("NON_EXPORTABLE_TYPE", "NOTHING_TO_INLINE")
 
 package kase
 

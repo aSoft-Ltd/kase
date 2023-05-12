@@ -3,11 +3,12 @@
 
 package kase
 
+import kase.internal.AbstractPossible
 import kotlin.js.JsExport
 
 data class Success<out D>(
     override val data: D
-) : LazyState<D>, EagerState<D>, Result<D>, ExecutorState<D>, FormState<D> {
+) : AbstractPossible<D>(), LazyState<D>, EagerState<D>, Result<D>, ExecutorState<D>, FormState<D> {
     override val value: D = data
     override val asPending: Nothing? = null
     override val asLoading: Nothing? = null

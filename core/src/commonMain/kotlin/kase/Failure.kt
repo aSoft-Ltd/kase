@@ -3,7 +3,8 @@
 
 package kase
 
-import actions.Action0
+import kevlar.Action0
+import kase.internal.AbstractPossible
 import kollections.iListOf
 import kotlin.js.JsExport
 
@@ -12,7 +13,7 @@ data class Failure<out D>(
     val message: String = cause.message ?: DEFAULT_MESSAGE,
     override val data: D? = null,
     val actions: List<Action0<Unit>> = iListOf()
-) : EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
+) : AbstractPossible<D>(), EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
     override val value: D? = data
     override val asPending: Nothing? = null
     override val asLoading: Nothing? = null

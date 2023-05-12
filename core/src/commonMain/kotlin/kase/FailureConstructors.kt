@@ -1,7 +1,9 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package kase
 
-import actions.Action0
-import actions.builders.Actions0Builder
+import kevlar.Action0
+import kevlar.builders.Actions0Builder
 
 inline fun <D> Failure(
     cause: Throwable,

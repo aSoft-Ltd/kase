@@ -1,7 +1,7 @@
 package kase
 
-import actions.Action0
-import actions.builders.Actions0Builder
+import kevlar.Action0
+import kevlar.builders.Actions0Builder
 
 private fun <D> Result<D>.toState(
     data: D? = this.data,

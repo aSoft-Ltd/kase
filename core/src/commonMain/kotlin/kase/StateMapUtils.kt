@@ -11,7 +11,7 @@ private fun <D, R> Loading<D>.mapToState(transform: (D) -> R): Loading<R> {
     }
 }
 
-internal fun <D, R> Success<D>.mapToState(transform: (D) -> R): State<R> {
+internal fun <D, R> Success<D>.mapToState(transform: (D) -> R): Result<R> {
     val d = data ?: return Success<R?>(null) as Success<R>
     return try {
         Success(transform(d))

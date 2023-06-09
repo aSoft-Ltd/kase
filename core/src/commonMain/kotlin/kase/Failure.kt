@@ -42,7 +42,7 @@ data class Failure<out D>(
 
     override fun valueOrNull(): D? = data
 
-    override fun valueOrThrow(msg: String): D = valueOrThrow(RuntimeException(msg))
+    override fun valueOrThrow(msg: String): D = valueOrThrow(RuntimeException(msg, cause))
 
     companion object {
         val DEFAULT_MESSAGE = "Unknown error"

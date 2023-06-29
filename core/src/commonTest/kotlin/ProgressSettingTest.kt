@@ -1,6 +1,7 @@
 import expect.expect
 import kase.Loading
 import kase.progress.StageProgressBag
+import kommander.expect
 import kotlin.test.Test
 
 class ProgressSettingTest {
@@ -8,7 +9,7 @@ class ProgressSettingTest {
     fun should_easily_update_progress() {
         val bag = StageProgressBag()
         val (cats, prods) = bag.setStages("Fetching categories", "Fetching products")
-        expect(cats.number).toBe(1)
+        expect<Int>(cats.number).toBe(1)
         expect(cats.outOf).toBe(2)
 
         expect(prods.number).toBe(2)

@@ -1,4 +1,3 @@
-import expect.expect
 import kase.Optional
 import kase.none
 import kase.optionalOf
@@ -12,7 +11,7 @@ class OptionalTest {
     fun should_be_easily_mapped() {
         val int = optionalOf(0)
         val res = int.map { it + 78 }.valueOrThrow()
-        expect<Int>(res).toBe(78)
+        expect(res).toBe(78)
     }
 
     @Test

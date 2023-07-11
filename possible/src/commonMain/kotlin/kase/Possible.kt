@@ -6,8 +6,6 @@ import kotlin.js.JsExport
 import kotlin.js.JsName
 
 interface Possible<out T> {
-    val value: T?
-
     @Throws(Throwable::class)
     @JsName("valueOrThrowException")
     fun valueOrThrow(exp: Throwable): T

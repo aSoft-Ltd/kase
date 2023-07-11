@@ -8,12 +8,9 @@ import kotlin.js.JsExport
 
 data class Success<out D>(
     override val data: D
-) : AbstractPossible<D>(), LazyState<D>, EagerState<D>, Result<D>, ExecutorState<D>, FormState<D> {
-    override val value: D = data
+) : AbstractPossible<D>(), LazyState<D>, Result<D>, ExecutorState<D> {
     override val asPending: Nothing? = null
     override val asLoading: Nothing? = null
-    override val asValidating: Nothing? = null
-    override val asSubmitting: Nothing? = null
     override val asExecuting: Nothing? = null
     override val asSuccess: Success<D> = this
     override val asFailure: Nothing? = null

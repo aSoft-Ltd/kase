@@ -13,12 +13,9 @@ data class Failure<out D>(
     val message: String = cause.message ?: DEFAULT_MESSAGE,
     override val data: D? = null,
     val actions: List<Action0<Unit>> = iListOf()
-) : AbstractPossible<D>(), EagerState<D>, LazyState<D>, Result<D>, ExecutorState<D>, FormState<D> {
-    override val value: D? = data
+) : AbstractPossible<D>(), LazyState<D>, Result<D>, ExecutorState<D> {
     override val asPending: Nothing? = null
     override val asLoading: Nothing? = null
-    override val asValidating: Nothing? = null
-    override val asSubmitting: Nothing? = null
     override val asExecuting: Nothing? = null
     override val asSuccess: Nothing? = null
     override val asFailure: Failure<D> = this

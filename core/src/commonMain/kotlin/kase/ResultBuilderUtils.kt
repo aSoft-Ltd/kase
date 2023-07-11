@@ -15,8 +15,3 @@ fun <D> Result<D>.toLazyState(
     data: D? = this.data,
     builder: (Actions0Builder<Unit>.() -> Action0<Unit>)
 ): LazyState<D> = toState(data, builder) as LazyState<D>
-
-fun <D> Result<D>.toFormState(
-    data: D? = this.data,
-    builder: (Actions0Builder<Unit>.() -> Action0<Unit>)
-): FormState<D> = toState(data, builder) as FormState<D>

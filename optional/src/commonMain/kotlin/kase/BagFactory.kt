@@ -3,6 +3,6 @@
 
 package kase
 
-import kollections.JsExport
+import kotlin.js.JsExport
 
 inline fun <T : Any> bagOf(value: T? = null): Bag<T> = Bag(value)

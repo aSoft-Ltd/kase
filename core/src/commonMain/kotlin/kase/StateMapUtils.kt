@@ -37,8 +37,6 @@ private fun <D, R> State<D>.mapToState(transform: (D) -> R): State<R> = when (th
     else -> this as State<R>
 }
 
-fun <D, R> EagerState<D>.map(transform: (D) -> R): EagerState<R> = mapToState(transform) as EagerState<R>
-
 fun <D, R> LazyState<D>.map(transform: (D) -> R): LazyState<R> = mapToState(transform) as LazyState<R>
 
 fun <D, R> ExecutorState<D>.map(transform: (D) -> R): ExecutorState<R> = mapToState(transform) as ExecutorState<R>

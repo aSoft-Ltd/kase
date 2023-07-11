@@ -8,8 +8,6 @@ import kotlin.js.JsExport
 
 abstract class None<out T : Any> private constructor() : AbstractPossible<T>(), Optional<T> {
 
-    override val value: Nothing? = null
-
     @PublishedApi
     internal companion object : None<Nothing>() {
         override val asSome: Nothing? = null
@@ -26,7 +24,7 @@ abstract class None<out T : Any> private constructor() : AbstractPossible<T>(), 
         None
     }
 
-    override fun equals(other: Any?): Boolean = other is Optional<*> && other.value == null
+    override fun equals(other: Any?): Boolean = other is None<*> || other == null
 
     @Throws(NoSuchElementException::class)
     override fun valueOrThrow(): Nothing = throw NoSuchElementException("Optional has no value")
@@ -37,7 +35,7 @@ abstract class None<out T : Any> private constructor() : AbstractPossible<T>(), 
 
     override fun valueOrThrow(msg: String): Nothing = throw NoSuchElementException(msg)
 
-    override fun valueOrNull(): T? = value
+    override fun valueOrNull(): T? = null
 
     override fun toString(): String = "None"
 

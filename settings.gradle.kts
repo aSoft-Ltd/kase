@@ -38,4 +38,4 @@ includeSubs("kommander", "../kommander", "core")
 includeSubs("kollections", "../kollections", "interoperable")
 includeSubs("kevlar", "../kevlar", "core")
 
-includeSubs("kase", ".", "core")
+includeSubs("kase", ".", "possible", "optional", "core")

@@ -18,15 +18,13 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kevlarCore)
-                api(projects.kasePossible)
-                api(projects.kollectionsInteroperable)
+
             }
         }
 
         val commonTest by getting {
             dependencies {
-                api(projects.kommanderCore)
+
             }
         }
     }

@@ -18,8 +18,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kevlarCore)
                 api(projects.kasePossible)
+                api(libs.kevlar.core)
                 api(libs.kollections.interoperable)
             }
         }

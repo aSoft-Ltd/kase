@@ -18,7 +18,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kasePossible)
+                api(libs.kase.possible)
             }
         }
 

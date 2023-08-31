@@ -1,26 +1,9 @@
 pluginManagement {
-    enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-    dependencyResolutionManagement {
-        versionCatalogs {
-            file("../versions/gradle/versions").listFiles().map {
-                it.nameWithoutExtension to it.absolutePath
-            }.forEach { (name, path) ->
-                create(name) { from(files(path)) }
-            }
-        }
-    }
-    repositories {
-        mavenCentral()
-        google()
-        gradlePluginPortal()
-        mavenLocal()
-    }
-
+    includeBuild("../build-logic")
 }
 
-fun includeRoot(name: String, path: String) {
-    include(":$name")
-    project(":$name").projectDir = File(path)
+plugins {
+    id("multimodule")
 }
 
 fun includeSubs(base: String, path: String = base, vararg subs: String) {
@@ -30,12 +13,10 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
+listOf(
+    "kommander", "kollections", "kevlar"
+).forEach { includeBuild("../$it") }
+
 rootProject.name = "kase"
-
-includeBuild("../able")
-
-includeSubs("kommander", "../kommander", "core")
-includeSubs("kollections", "../kollections", "interoperable")
-includeSubs("kevlar", "../kevlar", "core")
 
 includeSubs("kase", ".", "possible", "optional", "core")

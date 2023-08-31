@@ -20,7 +20,7 @@ kotlin {
             dependencies {
                 api(projects.kevlarCore)
                 api(projects.kasePossible)
-                api(projects.kollectionsInteroperable)
+                api(libs.kollections.interoperable)
             }
         }
 

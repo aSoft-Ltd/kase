@@ -15,19 +15,16 @@ repositories {
 
 val v = libs.versions.asoft.get()
 
-group = "tz.co.asoft"
-version = v
+allprojects {
+    group = "tz.co.asoft"
+    version = v
+}
 
 tasks.dokkaHtmlMultiModule {
     moduleName.set("Kase")
     outputDirectory.set(rootDir.resolve("docs"))
     moduleVersion.set(v)
     includes.from("ReadMe.md")
-}
-
-allprojects {
-    group = "tz.co.asoft"
-    version = v
 }
 
 subprojects {

@@ -41,6 +41,13 @@ data class Failure<out D>(
 
     override fun valueOrThrow(msg: String): D = valueOrThrow(RuntimeException(msg, cause))
 
+    override fun onSuccess(callback: (D) -> Unit) = this
+
+    override fun onFailure(callback: (Throwable) -> Unit): Failure<D> {
+        callback(cause)
+        return this
+    }
+
     companion object {
         val DEFAULT_MESSAGE = "Unknown error"
     }

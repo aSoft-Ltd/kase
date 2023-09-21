@@ -23,6 +23,13 @@ data class Success<out D>(
 
     override fun exists(): Boolean = true
 
+    override fun onSuccess(callback: (D) -> Unit): Success<D> {
+        callback(data)
+        return this
+    }
+
+    override fun onFailure(callback: (Throwable) -> Unit) = this
+
     override fun valueOr(default: @UnsafeVariance D): D = data
 
     override fun valueOrNull(): D = data

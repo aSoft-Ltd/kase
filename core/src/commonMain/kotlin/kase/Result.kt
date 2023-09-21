@@ -17,4 +17,8 @@ sealed interface Result<out D> : Possible<D>, State<D>, CanSucceed<D>, CanFail<D
     fun catch(resolver: (Throwable) -> @UnsafeVariance D): Result<D>
 
     fun andCatch(resolver: (Throwable) -> Result<@UnsafeVariance D>): Result<D>
+
+    fun onSuccess(callback: (D)->Unit) : Result<D>
+
+    fun onFailure(callback: (Throwable) -> Unit) : Result<D>
 }

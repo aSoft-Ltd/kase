@@ -23,4 +23,6 @@ data class Error(
         cause = (if (message == null) error.cause?.message else error.message) ?: "Unknown",
         stackTrace = error.stackTraceToString()
     )
+
+    fun toException() = RuntimeException(message, RuntimeException(cause))
 }

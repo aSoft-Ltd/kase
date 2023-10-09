@@ -1,6 +1,5 @@
 package kase
 
-import kollections.iListOf
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.serializer
@@ -15,14 +14,8 @@ fun <D> StringFormat.decodeResponseFromString(serializer: KSerializer<D>, json: 
 } catch (err: Throwable) {
     try {
         decodeFromString(Failed.serializer(), json)
-    } catch (_: Throwable) {
-        val e = Error(
-            message = err.message ?: "Unknown",
-            type = "Bad server response",
-            cause = err.cause?.message ?: "Unknown",
-            stackTrace = err.stackTraceToString()
-        )
-        Failed(Status(606, "Internal API Error"), iListOf(e))
+    } catch (cause: Throwable) {
+        Failed(Status(606, "Internal API Error"), cause.toError())
     }
 }
 

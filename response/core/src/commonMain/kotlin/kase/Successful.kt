@@ -14,7 +14,7 @@ data class Successful<out D>(
 ) : AbstractPossible<D>(), Response<D> {
 
     @JsName("withData")
-    constructor(data: D) : this(Status(200, "ok"), data)
+    constructor(data: D) : this(Status.CODE_200_Ok, data)
 
     override fun valueOrThrow(exp: Throwable) = throw exp
 

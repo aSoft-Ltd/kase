@@ -8,7 +8,7 @@ description = "A kotlin multiplatform library to present common UI states"
 
 kotlin {
     if (Targeting.JVM) jvm { library() }
-    if (Targeting.JS) js(IR) { library() }
+//    if (Targeting.JS) js(IR) { library() }
 //    if (Targeting.WASM) wasm { library() }
     val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
 //    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
@@ -18,17 +18,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(projects.kasePossible)
-                api(libs.kevlar.core)
-                api(kotlinx.serialization.core)
-                api(libs.kollections.interoperable)
-            }
-        }
-
-        val commonTest by getting {
-            dependencies {
-                api(libs.kommander.core)
-                api(kotlinx.serialization.json)
+                api(projects.kaseResponseCore)
+                api(ktor.server.core)
+                api(libs.lexi.api)
             }
         }
     }

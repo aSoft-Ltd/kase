@@ -15,13 +15,10 @@ import kotlinx.serialization.StringFormat
 import kotlinx.serialization.encodeToString
 
 suspend inline fun <reified D> PipelineContext<*, ApplicationCall>.respondJson(codec: StringFormat, block: () -> D) = try {
-//    call.response.header("Content-Security-Policy","default-src 'self'")
     call.respond(codec, Successful(block()))
 } catch (exp: ResponseException) {
-//    call.response.header("Content-Security-Policy","default-src 'self'")
     call.respond(codec, exp.toFailed())
 } catch (err: Throwable) {
-//    call.response.header("Content-Security-Policy","default-src 'self'")
     call.respond(codec, err.toFailed())
 }
 

@@ -6,6 +6,7 @@ import com.vanniktech.maven.publish.SonatypeHost
     alias(kotlinz.plugins.serialization) apply false
     alias(asoft.plugins.library) apply false
     alias(vanniktech.plugins.maven.publish) apply false
+    alias(petuska.plugins.root.npm.publish) apply false
     alias(kotlinz.plugins.dokka)
 }
 

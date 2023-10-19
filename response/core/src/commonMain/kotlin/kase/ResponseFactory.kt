@@ -14,8 +14,7 @@ inline fun Throwable.toFailed(code: Int = 400, message: String = this.message ?:
     error = toError()
 )
 
-@PublishedApi
-internal fun Throwable?.toError() = if (this != null) Error(
+fun Throwable?.toError() = if (this != null) Error(
     message = message ?: "Unknown",
     type = this::class.simpleName ?: "Unknown",
     cause = cause?.message ?: "Unknown",

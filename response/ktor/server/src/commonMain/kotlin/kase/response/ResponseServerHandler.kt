@@ -6,6 +6,7 @@ import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.call
 import io.ktor.server.response.respondText
 import io.ktor.util.pipeline.PipelineContext
+import kase.Error
 import kase.Failed
 import kase.ResponseException
 import kase.Status
@@ -23,13 +24,13 @@ suspend inline fun <reified D> PipelineContext<*, ApplicationCall>.respondJson(c
 }
 
 suspend inline fun <reified D> ApplicationCall.respond(codec: StringFormat, res: Successful<D>) = respondText(
-    text = codec.encodeToString<Successful<D>>(res),
+    text = codec.encodeToString<D>(res.data),
     contentType = ContentType.Application.Json,
     status = res.status.toKtorStatus()
 )
 
 suspend fun ApplicationCall.respond(codec: StringFormat, res: Failed) = respondText(
-    text = codec.encodeToString<Failed>(res),
+    text = codec.encodeToString<Error>(res.error),
     contentType = ContentType.Application.Json,
     status = res.status.toKtorStatus()
 )

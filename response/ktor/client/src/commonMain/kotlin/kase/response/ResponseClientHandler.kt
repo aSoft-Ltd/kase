@@ -9,14 +9,15 @@ import kase.Successful
 import kase.toError
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.serializer
+import lexi.LogTracer
 import lexi.Logger
 
 @Suppress("ThrowableNotThrown")
-suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, logger: Logger, action: String): T {
+suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, tracer: LogTracer): T {
     val txt = bodyAsText()
-    logger.debug(txt)
+    tracer.debug(txt)
     val status = toStatus()
-    val res : Response<T> = try {
+    val res: Response<T> = try {
         Successful(
             status = status,
             data = codec.decodeFromString(serializer(), txt)
@@ -32,9 +33,9 @@ suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, logg
             Failed(status, cause.toError())
         }
     }
-    when(res) {
-        is Successful -> logger.info("$action passed")
-        is Failed -> logger.error("$action failed",res.error.toException())
+    when (res) {
+        is Successful -> tracer.passed()
+        is Failed -> tracer.failed(res.error.toException())
     }
     return res.getOrThrow()
 }

@@ -14,12 +14,12 @@ inline fun Throwable.toFailed(code: Int = 400, message: String = this.message ?:
     error = toError()
 )
 
-fun Throwable?.toError() = if (this != null) Error(
+fun Throwable?.toError() = if (this != null) ResponseError(
     message = message ?: "Unknown",
     type = this::class.simpleName ?: "Unknown",
     cause = cause?.message ?: "Unknown",
     stackTrace = stackTraceToString()
-) else Error(
+) else ResponseError(
     message = "Unknown error",
     type = "Unknown type",
     cause = "Unknown cause",

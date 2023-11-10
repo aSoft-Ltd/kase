@@ -1,7 +1,7 @@
 package kase.response
 
 import io.ktor.client.statement.*
-import kase.Error
+import kase.ResponseError
 import kase.Failed
 import kase.Response
 import kase.Status
@@ -10,7 +10,6 @@ import kase.toError
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.serializer
 import lexi.LogTracer
-import lexi.Logger
 
 @Suppress("ThrowableNotThrown")
 suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, tracer: LogTracer): T {
@@ -26,7 +25,7 @@ suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, trac
         try {
             Failed(
                 status = status,
-                error = codec.decodeFromString(Error.serializer(), txt)
+                error = codec.decodeFromString(ResponseError.serializer(), txt)
             )
         } catch (cause: Throwable) {
             cause.addSuppressed(exp)

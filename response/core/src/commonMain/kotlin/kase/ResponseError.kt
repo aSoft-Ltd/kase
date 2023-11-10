@@ -9,7 +9,7 @@ import kotlin.js.JsName
 import kotlin.jvm.JvmOverloads
 
 @Serializable
-data class Error(
+data class ResponseError(
     val message: String,
     val type: String,
     val cause: String,

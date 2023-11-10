@@ -11,7 +11,7 @@ import kotlin.js.JsExport
 @Serializable
 data class Failed(
     override val status: Status,
-    val error: Error
+    val error: ResponseError
 ) : AbstractPossible<Nothing>(), Response<Nothing> {
 
     @Transient

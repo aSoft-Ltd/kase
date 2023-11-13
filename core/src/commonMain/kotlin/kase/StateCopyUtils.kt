@@ -1,7 +1,5 @@
 package kase
 
-import kevlar.Action0
-import kevlar.builders.Actions0Builder
 import kase.progress.ProgressState
 
 fun <D> State<D>.loading(
@@ -15,9 +13,6 @@ fun State<Any?>.executing(
     progress: ProgressState? = null
 ): Executing = if (progress != null) Executing(message, progress) else Executing(message)
 
-fun <D> State<D>.failure(
-    cause: Throwable,
-    builder: (Actions0Builder<Unit>.() -> Action0<Unit>)? = null
-): Failure<D> = if (builder != null) Failure(cause = cause, data = data, builder = builder) else Failure(cause)
+fun <D> State<D>.failure(cause: Throwable): Failure<D> = Failure(cause = cause, data = data)
 
 fun <D> State<D>.success(data: D): Success<D> = Success(data)

@@ -19,7 +19,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.kasePossible)
-                api(libs.kevlar.core)
                 api(libs.kollections.interoperable)
             }
         }

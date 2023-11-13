@@ -17,7 +17,7 @@ data class ResponseError(
 ) {
 
     @JvmOverloads
-    @JsName("__ignore__")
+    @JsExport.Ignore
     constructor(error: Throwable, message: String? = null) : this(
         message = message ?: error.message ?: "Unknown",
         type = error::class.simpleName ?: "Unknown",

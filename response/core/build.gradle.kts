@@ -19,7 +19,6 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(projects.kasePossible)
-                api(libs.kevlar.core)
                 api(kotlinx.serialization.core)
             }
         }
@@ -27,7 +26,6 @@ kotlin {
         val commonTest by getting {
             dependencies {
                 api(libs.kommander.core)
-                api(kotlinx.serialization.json)
             }
         }
     }

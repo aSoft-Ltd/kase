@@ -4,7 +4,7 @@ internal fun <D> Failure<D>.catchToState(resolver: (Throwable) -> D): State<D> =
     Success(resolver(cause))
 } catch (err: Throwable) {
     err.addSuppressed(cause)
-    Failure(err, err.message ?: message, data, actions)
+    Failure(err, err.message ?: message, data)
 }
 
 private fun <D> State<D>.catchToState(resolver: (Throwable) -> D): State<D> {

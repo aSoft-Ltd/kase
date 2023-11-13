@@ -1,7 +1,5 @@
 package kase
 
-import kollections.iEmptyList
-
 private fun <D, R> Loading<D>.mapToState(transform: (D) -> R): Loading<R> {
     val d = data ?: return Loading(message, null)
     return try {
@@ -16,17 +14,17 @@ internal fun <D, R> Success<D>.mapToState(transform: (D) -> R): Result<R> {
     return try {
         Success(transform(d))
     } catch (err: Throwable) {
-        Failure(err, err.message ?: Failure.DEFAULT_MESSAGE, null, iEmptyList())
+        Failure(err, err.message ?: Failure.DEFAULT_MESSAGE, null)
     }
 }
 
 internal fun <D, R> Failure<D>.mapToState(transform: (D) -> R): Failure<R> {
-    val d = data ?: return Failure(cause, message, null, actions)
+    val d = data ?: return Failure(cause, message, null)
     return try {
-        Failure(cause, message, transform(d), actions)
+        Failure(cause, message, transform(d))
     } catch (err: Throwable) {
         err.addSuppressed(cause)
-        Failure(err, err.message ?: message, null, actions)
+        Failure(err, err.message ?: message, null)
     }
 }
 

@@ -23,15 +23,17 @@ interface Stage {
      */
     val outOf: Int
 
-    @JsName("_ignore_invoke1")
+    @JsExport.Ignore
+    operator fun invoke(done: Int, total: Int): StageProgress
+    @JsExport.Ignore
     operator fun invoke(done: Long, total: Long): StageProgress
 
-    @JsName("_ignore_invoke2")
+    @JsExport.Ignore
     operator fun invoke(progress: StageProgress): StageProgress
 
-    @JsName("_ignore_invoke3")
+    @JsExport.Ignore
     operator fun invoke(progress: ProgressState): StageProgress
 
-    @JsName("_ignore_invoke4")
+    @JsExport.Ignore
     operator fun <D> invoke(state: ExecutorState<D>): StageProgress
 }

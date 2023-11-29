@@ -36,6 +36,7 @@ internal data class StageProgressImpl(
     override val total: Long
 ) : Progress by ProgressImpl(done, total), StageProgress {
 
+    override fun invoke(done: Int, total: Int) = StageProgressImpl(name, number, outOf, done.toLong(), total.toLong())
     override fun invoke(progress: StageProgress) = StageProgressImpl(name, number, outOf, progress.done, progress.total)
 
     override fun invoke(done: Long, total: Long) = StageProgressImpl(name, number, outOf, done, total)

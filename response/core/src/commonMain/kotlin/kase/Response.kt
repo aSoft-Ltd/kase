@@ -2,7 +2,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 sealed interface Response<out D> : Possible<D> {
     val status: Status

@@ -6,7 +6,7 @@ package kase.progress
 import kase.internal.ProgressImpl
 import kollections.List
 import kollections.iListOf
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.math.round
 
 data class ProgressState(

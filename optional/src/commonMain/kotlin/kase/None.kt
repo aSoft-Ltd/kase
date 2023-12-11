@@ -4,7 +4,7 @@
 package kase
 
 import kase.internal.AbstractPossible
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 abstract class None<out T : Any> private constructor() : AbstractPossible<T>(), Optional<T> {
 

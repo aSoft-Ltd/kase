@@ -4,7 +4,7 @@
 package kase
 
 import kase.internal.AbstractPossible
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 data class Failure<out D>(
     val cause: Throwable,

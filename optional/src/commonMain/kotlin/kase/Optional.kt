@@ -3,7 +3,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 sealed interface Optional<out T : Any> : Possible<T> {
     val asSome: Some<T>?

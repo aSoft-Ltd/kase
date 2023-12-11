@@ -4,7 +4,7 @@
 package kase
 
 import kase.progress.ProgressState
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 data class Executing(
     val message: String = "Executing . . .",

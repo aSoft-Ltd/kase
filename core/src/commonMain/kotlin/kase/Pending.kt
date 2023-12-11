@@ -2,7 +2,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 object Pending : LazyState<Nothing>, ExecutorState<Nothing> {
 

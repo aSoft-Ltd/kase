@@ -3,7 +3,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 /**
  * An ExecutorState is a state model that passes through an [Executing] phase.

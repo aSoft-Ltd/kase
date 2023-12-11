@@ -3,7 +3,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 /**
  * A LazyState is a state model that starts lazily.

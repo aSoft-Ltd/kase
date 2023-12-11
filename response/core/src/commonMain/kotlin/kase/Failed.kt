@@ -6,7 +6,7 @@ package kase
 import kase.internal.AbstractPossible
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 @Serializable
 data class Failed(

@@ -3,7 +3,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 sealed interface CanPend {
     val asPending: Pending?

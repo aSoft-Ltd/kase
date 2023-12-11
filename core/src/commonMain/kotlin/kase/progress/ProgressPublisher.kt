@@ -4,7 +4,7 @@
 package kase.progress
 
 import kollections.List
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 interface ProgressPublisher {
     fun setStages(vararg stageNames: String): List<Stage>

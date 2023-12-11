@@ -2,7 +2,7 @@
 
 package kase
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 /**
  * A Result is a state model that models outcome

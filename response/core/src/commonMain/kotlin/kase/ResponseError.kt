@@ -4,7 +4,8 @@
 package kase
 
 import kotlinx.serialization.Serializable
-import kotlin.js.JsExport
+import kotlinx.JsExport
+import kotlinx.JsExportIgnore
 import kotlin.js.JsName
 import kotlin.jvm.JvmOverloads
 
@@ -17,7 +18,7 @@ data class ResponseError(
 ) {
 
     @JvmOverloads
-    @JsExport.Ignore
+    @JsExportIgnore
     constructor(error: Throwable, message: String? = null) : this(
         message = message ?: error.message ?: "Unknown",
         type = error::class.simpleName ?: "Unknown",

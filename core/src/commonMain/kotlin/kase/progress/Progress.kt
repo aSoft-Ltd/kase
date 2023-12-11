@@ -3,7 +3,7 @@
 
 package kase.progress
 
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 interface Progress {
 

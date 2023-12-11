@@ -4,7 +4,7 @@
 package kase
 
 import kase.internal.AbstractPossible
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 data class Success<out D>(
     override val data: D

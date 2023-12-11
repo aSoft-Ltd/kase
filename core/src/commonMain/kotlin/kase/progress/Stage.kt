@@ -4,8 +4,9 @@
 package kase.progress
 
 import kase.ExecutorState
-import kotlin.js.JsExport
+import kotlinx.JsExport
 import kotlin.js.JsName
+import kotlinx.JsExportIgnore
 
 interface Stage {
     /**
@@ -23,17 +24,17 @@ interface Stage {
      */
     val outOf: Int
 
-    @JsExport.Ignore
+    @JsExportIgnore
     operator fun invoke(done: Int, total: Int): StageProgress
-    @JsExport.Ignore
+    @JsExportIgnore
     operator fun invoke(done: Long, total: Long): StageProgress
 
-    @JsExport.Ignore
+    @JsExportIgnore
     operator fun invoke(progress: StageProgress): StageProgress
 
-    @JsExport.Ignore
+    @JsExportIgnore
     operator fun invoke(progress: ProgressState): StageProgress
 
-    @JsExport.Ignore
+    @JsExportIgnore
     operator fun <D> invoke(state: ExecutorState<D>): StageProgress
 }

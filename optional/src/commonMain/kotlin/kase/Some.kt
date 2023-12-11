@@ -4,7 +4,7 @@
 package kase
 
 import kase.internal.AbstractPossible
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 data class Some<out T : Any>(val value: T) : AbstractPossible<T>(), Optional<T> {
     override val asSome: Some<T> = this

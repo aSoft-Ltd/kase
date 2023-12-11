@@ -4,7 +4,7 @@
 package kase
 
 import kase.internal.AbstractPossible
-import kotlin.js.JsExport
+import kotlinx.JsExport
 
 class Bag<out T : Any>(var value: @UnsafeVariance T? = null) : AbstractPossible<T>(), Possible<T> {
 

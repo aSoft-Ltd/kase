@@ -16,3 +16,5 @@ fun State<Any?>.executing(
 fun <D> State<D>.failure(cause: Throwable): Failure<D> = Failure(cause = cause, data = data)
 
 fun <D> State<D>.success(data: D): Success<D> = Success(data)
+
+inline fun <T> T.toSuccess() = Success(this)

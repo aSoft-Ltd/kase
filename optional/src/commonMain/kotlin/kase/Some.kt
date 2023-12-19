@@ -7,20 +7,17 @@ import kase.internal.AbstractPossible
 import kotlinx.JsExport
 
 data class Some<out T : Any>(val value: T) : AbstractPossible<T>(), Optional<T> {
-    override val asSome: Some<T> = this
-
-    override val asNone: Nothing? = null
 
     override fun <R : Any> map(transform: (T) -> R): Optional<R> = try {
         Some(transform(value))
     } catch (_: Throwable) {
-        None
+        None.instance
     }
 
     override fun <R : Any> flatMap(transform: (T) -> Optional<R>): Optional<R> = try {
         transform(value)
     } catch (_: Throwable) {
-        None
+        None.instance
     }
 
     override fun catch(fn: () -> @UnsafeVariance T): Some<T> = this

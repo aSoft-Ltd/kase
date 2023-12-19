@@ -5,7 +5,10 @@ package kase.progress
 
 import kase.internal.ProgressImpl
 import kollections.List
-import kollections.iListOf
+import kollections.forEach
+import kollections.isEmpty
+import kollections.listOf
+import kollections.size
 import kotlinx.JsExport
 import kotlin.math.round
 
@@ -25,7 +28,7 @@ data class ProgressState(
             val current = stage(done, total)
             return ProgressState(
                 current = current,
-                stages = iListOf(current)
+                stages = listOf(current)
             )
         }
 

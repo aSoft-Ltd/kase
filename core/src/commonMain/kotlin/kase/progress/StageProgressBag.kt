@@ -1,7 +1,14 @@
 package kase.progress
 
-import kollections.toIList
 import kollections.List
+import kollections.toList
+import kollections.MutableMap
+import kollections.mutableMapOf
+import kollections.set
+import kollections.putAll
+import kollections.mapIndexed
+import kollections.associate
+import kollections.values
 
 class StageProgressBag : ProgressPublisher {
     private val stages: MutableMap<String, StageProgress> = mutableMapOf()
@@ -12,15 +19,15 @@ class StageProgressBag : ProgressPublisher {
         val sgs = stageNames.mapIndexed { index, s ->
             Stage(s, index + 1, stageNames.size)
         }.associate { it.name to it(0, 0) }
-        stages.putAll(sgs.toMutableMap())
-        return sgs.values.toIList()
+        stages.putAll(sgs)
+        return sgs.values.toList()
     }
 
     override fun updateProgress(p: StageProgress): ProgressState {
         stages[p.name] = p
         progress = ProgressState(
             current = p,
-            stages = stages.values.toIList()
+            stages = stages.values.toList()
         )
         return progress
     }

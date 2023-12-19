@@ -1,5 +1,4 @@
 @file:JsExport
-@file:Suppress("NON_EXPORTABLE_TYPE", "NOTHING_TO_INLINE")
 
 package kase
 
@@ -8,10 +7,10 @@ import kotlin.jvm.JvmOverloads
 
 @JvmOverloads
 inline fun <T : Any> optionalOf(value: T? = null): Optional<T> = when (value) {
-    null -> None
-    else -> Some(value)
+    null -> none()
+    else -> some(value)
 }
 
-inline fun <T : Any> none(): None<T> = None
+inline fun <T : Any> none(): None<T> = None.instance
 
 inline fun <T : Any> some(value: T) = Some(value)

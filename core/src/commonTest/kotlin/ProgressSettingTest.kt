@@ -1,6 +1,8 @@
 import kase.Loading
 import kase.progress.StageProgressBag
 import kommander.expect
+import kollections.component1
+import kollections.component2
 import kotlin.test.Test
 
 class ProgressSettingTest {

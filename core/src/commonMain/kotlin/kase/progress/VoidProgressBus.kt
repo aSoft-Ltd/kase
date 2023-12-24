@@ -1,7 +1,7 @@
 package kase.progress
 
-class StageProgressBag : AbstractProgressBag() {
+object VoidProgressBus : AbstractProgressBag() {
     override fun onUpdate(callback: (ProgressState) -> Unit) {
-        handlers.add(callback)
+
     }
 }

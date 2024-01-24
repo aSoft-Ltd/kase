@@ -7,19 +7,26 @@ import kase.Response
 import kase.Status
 import kase.Successful
 import kase.toError
+import kotlinx.serialization.KSerializer
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.serializer
 import lexi.LogTracer
 
+suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, tracer: LogTracer): T = getOrThrow(
+    serializer = serializer(),
+    codec = codec,
+    tracer = tracer
+)
+
 @Suppress("ThrowableNotThrown")
-suspend inline fun <reified T> HttpResponse.getOrThrow(codec: StringFormat, tracer: LogTracer): T {
+suspend fun <T> HttpResponse.getOrThrow(serializer: KSerializer<T>, codec: StringFormat, tracer: LogTracer): T {
     val txt = bodyAsText()
     tracer.debug(txt)
     val status = toStatus()
     val res: Response<T> = try {
         Successful(
             status = status,
-            data = codec.decodeFromString(serializer(), txt)
+            data = codec.decodeFromString(serializer, txt)
         )
     } catch (exp: Throwable) {
         try {

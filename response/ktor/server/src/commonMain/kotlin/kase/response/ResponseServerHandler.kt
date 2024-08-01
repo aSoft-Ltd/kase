@@ -14,8 +14,9 @@ import kase.Successful
 import kase.toFailed
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.encodeToString
+import io.ktor.server.routing.RoutingContext
 
-suspend inline fun <reified D> PipelineContext<*, ApplicationCall>.respondJson(codec: StringFormat, block: () -> D) = try {
+suspend inline fun <reified D> RoutingContext.respondJson(codec: StringFormat, block: () -> D) = try {
     call.respond(codec, Successful(block()))
 } catch (exp: ResponseException) {
     call.respond(codec, exp.toFailed())

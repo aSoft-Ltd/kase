@@ -20,5 +20,9 @@ kotlin {
         commonMain.dependencies {
             api(libs.kotlinx.exports)
         }
+
+        if(Targeting.JVM) jvmTest.dependencies {
+            implementation(kotlin("test-junit5"))
+        }
     }
 }

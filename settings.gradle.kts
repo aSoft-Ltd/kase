@@ -19,6 +19,4 @@ listOf(
 
 rootProject.name = "kase"
 
-includeSubs("kase", ".", "possible", "optional", "core", "response")
-//includeSubs("kase-response", "response", "core")
-//includeSubs("kase-response-ktor", "response/ktor", "client", "server")
+includeSubs("kase", ".", "possible", "optional", "core")

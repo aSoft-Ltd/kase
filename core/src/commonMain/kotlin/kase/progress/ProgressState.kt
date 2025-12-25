@@ -4,11 +4,6 @@
 package kase.progress
 
 import kase.internal.ProgressImpl
-import kollections.List
-import kollections.forEach
-import kollections.isEmpty
-import kollections.listOf
-import kollections.size
 import kotlinx.JsExport
 import kotlin.math.round
 

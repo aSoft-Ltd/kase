@@ -1,15 +1,5 @@
 package kase.progress
 
-import kollections.List
-import kollections.toList
-import kollections.MutableMap
-import kollections.mutableMapOf
-import kollections.set
-import kollections.putAll
-import kollections.mapIndexed
-import kollections.associate
-import kollections.values
-
 abstract class AbstractProgressBag : ProgressBus {
     private val stages: MutableMap<String, StageProgress> = mutableMapOf()
     var progress: ProgressState = ProgressState.initial()

@@ -1,7 +1,7 @@
 package kase
 
-import kase.outcome.Failure
-import kase.outcome.Outcome
+import kase.either.Failure
+import kase.either.Either
 import kommander.expect
 import kommander.toBe
 import kotlinx.serialization.json.Json
@@ -13,12 +13,12 @@ class SerializationTest {
 
     @Test
     fun should_be_serializable() {
-        val o: Outcome<String, Int> = Failure("Bad Number")
+        val o: Either<String, Int> = Failure("Bad Number")
         val json = codec.encodeToString(o)
         expect(json).toBe(
             """
             {
-                "type": "kase.outcome.Failure",
+                "type": "kase.either.Failure",
                 "value": "Bad Number"
             }
         """.trimIndent()
@@ -29,12 +29,12 @@ class SerializationTest {
     fun should_be_deserializable() {
         val json = """
             {
-                "type": "kase.outcome.Failure",
+                "type": "kase.either.Failure",
                 "value": "Bad Number"
             }
         """.trimIndent()
 
-        val o = codec.decodeFromString<Outcome<String, Boolean>>(json)
+        val o = codec.decodeFromString<Either<String, Boolean>>(json)
         expect(o).toBe<Failure<Int>>()
 
         expect(o.error()).toBe("Bad Number")

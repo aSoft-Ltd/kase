@@ -1,7 +1,7 @@
 package kase
 
-import kase.outcome.Outcome
-import kase.outcome.Success
+import kase.either.Either
+import kase.either.Success
 
 class RealWorldUseCaseTest {
 
@@ -13,6 +13,6 @@ class RealWorldUseCaseTest {
             data class UnknownError(val cause: Throwable) : CreateUserError
         }
 
-        fun create(username: String): Outcome<CreateUserError, String> = Success(username)
+        fun create(username: String): Either<CreateUserError, String> = Success(username)
     }
 }

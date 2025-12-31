@@ -2,7 +2,6 @@
 
 package kase.progress
 
-import kollections.List
 import kotlinx.JsExport
 
 interface StagedProgression : Progression {
